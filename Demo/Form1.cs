@@ -1,4 +1,5 @@
-﻿using QRCoder;
+﻿using Demo.Properties;
+using QRCoder;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,15 +54,17 @@ namespace Demo
             // TODO: esta línea de código carga datos en la tabla 'demoDataSet1.Producto' Puede moverla o quitarla según sea necesario.
             this.productoTableAdapter1.Fill(this.demoDataSet1.Producto);
             Fecha.Text = DateTime.Now.ToString("d");
-            string P, B;
-            P = comboBox1.Text;
-            B = comboBox2.Text;
-            int Bau = Int32.Parse(B);
-            Console.WriteLine(B);
+            CargarConf();
+            string P = textPuerto.Text;
+            Settings.Default.Puerto = P;
+            string B = textBaudio.Text;
+            Settings.Default.Baudio = B;
+            
+            
 
             try
             {
-                serialPort1 = new SerialPort(P,Bau, Parity.None, 8, StopBits.One);
+                serialPort1 = new SerialPort(P,9600, Parity.None, 8, StopBits.One);
                 serialPort1.Handshake = Handshake.None;
                 serialPort1.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
                 serialPort1.ReadTimeout = 500;
@@ -282,15 +285,46 @@ namespace Demo
             PanelOc.Visible=true;
             Fecha.Text = DateTime.Now.ToString("d");
             string P, B;
-            P = comboBox1.Text;
-            B = comboBox2.Text;
+            P = textPuerto.Text;
+            B = textBaudio.Text;
             int Bau =Int32.Parse(B);
+            //CargarConf();
+        }
+        
+        private void CargarConf()
+        {
+            textPuerto.Text = Settings.Default.Puerto;
+            textBaudio.Text = Settings.Default.Baudio;
+
+
         }
 
+        private void RestablecerConfig()
+        {
+            Settings.Default.Reset();
+            CargarConf();
+            MessageBox.Show("Se han Restablecido correctamente");
+        }
+        
+        private void GuardarConfig()
+        {
+            Settings.Default.Puerto = textPuerto.Text;
+            textBaudio.Text = Settings.Default.Baudio;
+            Settings.Default.Save();
+            MessageBox.Show("Se han guardado los cambios correctamente");
+        }
 
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Settings.Default.Puerto = textPuerto.Text;
+            Settings.Default.Baudio = textBaudio.Text; 
+            Settings.Default.Save();
+            
+        }
 
-
-
-
+        private void button5_Click(object sender, EventArgs e)
+        {
+            GuardarConfig();
+        }
     }
 }

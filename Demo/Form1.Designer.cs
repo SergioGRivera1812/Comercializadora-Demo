@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.comboProd = new System.Windows.Forms.ComboBox();
+            this.PanelOc = new System.Windows.Forms.Panel();
             this.Fecha = new System.Windows.Forms.Label();
             this.Hora = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -54,8 +55,6 @@
             this.casetaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.demoDataSet1 = new Demo.DemoDataSet1();
-            this.productoTableAdapter1 = new Demo.DemoDataSet1TableAdapters.ProductoTableAdapter();
-            this.productoTableAdapter = new Demo.DemoDataSetTableAdapters.ProductoTableAdapter();
             this.panel2 = new System.Windows.Forms.Panel();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
@@ -66,21 +65,23 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.baudiosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.demoDataSetBaudios = new Demo.DemoDataSetBaudios();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textPuerto = new System.Windows.Forms.TextBox();
+            this.textBaudio = new System.Windows.Forms.TextBox();
+            this.Guardar = new System.Windows.Forms.Button();
             this.puertosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.demoDataSetPuertosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.demoDataSetPuertos = new Demo.DemoDataSetPuertos();
-            this.puertosTableAdapter = new Demo.DemoDataSetPuertosTableAdapters.PuertosTableAdapter();
-            this.baudiosTableAdapter = new Demo.DemoDataSetBaudiosTableAdapters.BaudiosTableAdapter();
-            this.PanelOc = new System.Windows.Forms.Panel();
             this.checkConf = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
+            this.productoTableAdapter1 = new Demo.DemoDataSet1TableAdapters.ProductoTableAdapter();
+            this.productoTableAdapter = new Demo.DemoDataSetTableAdapters.ProductoTableAdapter();
+            this.baudiosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.demoDataSetBaudios = new Demo.DemoDataSetBaudios();
+            this.puertosTableAdapter = new Demo.DemoDataSetPuertosTableAdapters.PuertosTableAdapter();
+            this.baudiosTableAdapter = new Demo.DemoDataSetBaudiosTableAdapters.BaudiosTableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDataSet)).BeginInit();
@@ -91,11 +92,11 @@
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.baudiosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.demoDataSetBaudios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.puertosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDataSetPuertosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDataSetPuertos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.baudiosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demoDataSetBaudios)).BeginInit();
             this.SuspendLayout();
             // 
             // Indicador
@@ -213,6 +214,13 @@
             this.comboProd.Size = new System.Drawing.Size(121, 33);
             this.comboProd.TabIndex = 0;
             // 
+            // PanelOc
+            // 
+            this.PanelOc.Location = new System.Drawing.Point(12, 264);
+            this.PanelOc.Name = "PanelOc";
+            this.PanelOc.Size = new System.Drawing.Size(447, 100);
+            this.PanelOc.TabIndex = 13;
+            // 
             // Fecha
             // 
             this.Fecha.AutoSize = true;
@@ -305,14 +313,6 @@
             this.demoDataSet1.DataSetName = "DemoDataSet1";
             this.demoDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // productoTableAdapter1
-            // 
-            this.productoTableAdapter1.ClearBeforeFill = true;
-            // 
-            // productoTableAdapter
-            // 
-            this.productoTableAdapter.ClearBeforeFill = true;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkGreen;
@@ -374,10 +374,11 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button2);
-            this.panel3.Controls.Add(this.comboBox2);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.textPuerto);
+            this.panel3.Controls.Add(this.textBaudio);
+            this.panel3.Controls.Add(this.Guardar);
             this.panel3.Location = new System.Drawing.Point(12, 264);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(447, 100);
@@ -405,27 +406,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // comboBox2
-            // 
-            this.comboBox2.DataSource = this.baudiosBindingSource;
-            this.comboBox2.DisplayMember = "Baudio";
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(319, 6);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 32);
-            this.comboBox2.TabIndex = 14;
-            // 
-            // baudiosBindingSource
-            // 
-            this.baudiosBindingSource.DataMember = "Baudios";
-            this.baudiosBindingSource.DataSource = this.demoDataSetBaudios;
-            // 
-            // demoDataSetBaudios
-            // 
-            this.demoDataSetBaudios.DataSetName = "DemoDataSetBaudios";
-            this.demoDataSetBaudios.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -446,16 +426,34 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Puerto";
             // 
-            // comboBox1
+            // textPuerto
             // 
-            this.comboBox1.DataSource = this.puertosBindingSource;
-            this.comboBox1.DisplayMember = "Puerto";
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(97, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 32);
-            this.comboBox1.TabIndex = 0;
+            this.textPuerto.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productoBindingSource, "caseta", true));
+            this.textPuerto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textPuerto.Location = new System.Drawing.Point(84, 10);
+            this.textPuerto.Name = "textPuerto";
+            this.textPuerto.Size = new System.Drawing.Size(121, 31);
+            this.textPuerto.TabIndex = 12;
+            // 
+            // textBaudio
+            // 
+            this.textBaudio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productoBindingSource, "caseta", true));
+            this.textBaudio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBaudio.Location = new System.Drawing.Point(319, 7);
+            this.textBaudio.Name = "textBaudio";
+            this.textBaudio.Size = new System.Drawing.Size(121, 31);
+            this.textBaudio.TabIndex = 17;
+            // 
+            // Guardar
+            // 
+            this.Guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Guardar.Location = new System.Drawing.Point(238, 54);
+            this.Guardar.Name = "Guardar";
+            this.Guardar.Size = new System.Drawing.Size(91, 32);
+            this.Guardar.TabIndex = 18;
+            this.Guardar.Text = "Guardar";
+            this.Guardar.UseVisualStyleBackColor = true;
+            this.Guardar.Click += new System.EventHandler(this.button5_Click);
             // 
             // puertosBindingSource
             // 
@@ -471,21 +469,6 @@
             // 
             this.demoDataSetPuertos.DataSetName = "DemoDataSetPuertos";
             this.demoDataSetPuertos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // puertosTableAdapter
-            // 
-            this.puertosTableAdapter.ClearBeforeFill = true;
-            // 
-            // baudiosTableAdapter
-            // 
-            this.baudiosTableAdapter.ClearBeforeFill = true;
-            // 
-            // PanelOc
-            // 
-            this.PanelOc.Location = new System.Drawing.Point(12, 264);
-            this.PanelOc.Name = "PanelOc";
-            this.PanelOc.Size = new System.Drawing.Size(447, 100);
-            this.PanelOc.TabIndex = 13;
             // 
             // checkConf
             // 
@@ -519,6 +502,32 @@
             this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // productoTableAdapter1
+            // 
+            this.productoTableAdapter1.ClearBeforeFill = true;
+            // 
+            // productoTableAdapter
+            // 
+            this.productoTableAdapter.ClearBeforeFill = true;
+            // 
+            // baudiosBindingSource
+            // 
+            this.baudiosBindingSource.DataMember = "Baudios";
+            this.baudiosBindingSource.DataSource = this.demoDataSetBaudios;
+            // 
+            // demoDataSetBaudios
+            // 
+            this.demoDataSetBaudios.DataSetName = "DemoDataSetBaudios";
+            this.demoDataSetBaudios.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // puertosTableAdapter
+            // 
+            this.puertosTableAdapter.ClearBeforeFill = true;
+            // 
+            // baudiosTableAdapter
+            // 
+            this.baudiosTableAdapter.ClearBeforeFill = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -542,6 +551,7 @@
             this.Name = "Form1";
             this.Text = "Comercializadora Hustle Co";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -557,11 +567,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.baudiosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.demoDataSetBaudios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.puertosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDataSetPuertosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDataSetPuertos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.baudiosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demoDataSetBaudios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -602,12 +612,10 @@
         private System.Windows.Forms.ToolStripMenuItem reImpresiónToolStripMenuItem;
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.BindingSource demoDataSetPuertosBindingSource;
         private DemoDataSetPuertos demoDataSetPuertos;
         private System.Windows.Forms.BindingSource puertosBindingSource;
         private DemoDataSetPuertosTableAdapters.PuertosTableAdapter puertosTableAdapter;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private DemoDataSetBaudios demoDataSetBaudios;
@@ -619,6 +627,9 @@
         public System.Windows.Forms.Panel PanelOc;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox textBaudio;
+        private System.Windows.Forms.TextBox textPuerto;
+        private System.Windows.Forms.Button Guardar;
     }
 }
 
