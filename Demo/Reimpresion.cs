@@ -172,6 +172,10 @@ namespace Demo
             e.Graphics.DrawString("Peso del producto:  " + p + " Kg", font, Brushes.Black, new RectangleF(10, 140, width, 20));
             e.Graphics.DrawImage(pictureBox2.Image, 240, 250, 130, 130);
         }
-    
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

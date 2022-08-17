@@ -59,12 +59,13 @@ namespace Demo
             Settings.Default.Puerto = P;
             string B = textBaudio.Text;
             Settings.Default.Baudio = B;
-            
-            
+            int Bau = Int32.Parse(B);
+
+
 
             try
             {
-                serialPort1 = new SerialPort(P,9600, Parity.None, 8, StopBits.One);
+                serialPort1 = new SerialPort(P,Bau, Parity.None, 8, StopBits.One);
                 serialPort1.Handshake = Handshake.None;
                 serialPort1.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
                 serialPort1.ReadTimeout = 500;
@@ -239,8 +240,7 @@ namespace Demo
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            Nuevo n = new Nuevo();
-            n.Show();
+            RestablecerConfig();
         }
 
         private void checkConf_CheckedChanged(object sender, EventArgs e)
@@ -273,10 +273,12 @@ namespace Demo
                 textBox1.Visible = false;
                 button4.Visible = false;
                checkConf.Checked = false;
+                closeOnscreenKeyboard();
             }
             else
             {
                 MessageBox.Show("Constraseña incorrecta","AVISO");
+                closeOnscreenKeyboard();
             }
         }
 
@@ -309,7 +311,7 @@ namespace Demo
         private void GuardarConfig()
         {
             Settings.Default.Puerto = textPuerto.Text;
-            textBaudio.Text = Settings.Default.Baudio;
+            Settings.Default.Baudio = textBaudio.Text;
             Settings.Default.Save();
             MessageBox.Show("Se han guardado los cambios correctamente");
         }
@@ -325,6 +327,43 @@ namespace Demo
         private void button5_Click(object sender, EventArgs e)
         {
             GuardarConfig();
+        }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reporte r = new Reporte();
+            r.Show();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            string progFiles = @"C:\Program Files\Common Files\Microsoft Shared\ink";
+            string keyboardPath = Path.Combine(progFiles, "TabTip.exe");
+            oskProcess = Process.Start(keyboardPath);
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            closeOnscreenKeyboard();
+        }
+
+        private void textPuerto_Click(object sender, EventArgs e)
+        {
+            string progFiles = @"C:\Program Files\Common Files\Microsoft Shared\ink";
+            string keyboardPath = Path.Combine(progFiles, "TabTip.exe");
+            oskProcess = Process.Start(keyboardPath);
+        }
+
+        private void textBaudio_Click(object sender, EventArgs e)
+        {
+            string progFiles = @"C:\Program Files\Common Files\Microsoft Shared\ink";
+            string keyboardPath = Path.Combine(progFiles, "TabTip.exe");
+            oskProcess = Process.Start(keyboardPath);
         }
     }
 }
